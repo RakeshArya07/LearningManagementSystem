@@ -9,20 +9,21 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name ="teachers")
-
+@Data
 public class Teacher {
     private int id;
     private int version;
     private String name;
     private Gender gender;
     private int age;
-    private int klass_id;
     private Date created;
     private Date modified;
     private Klass klass;
+    private List<Klass> klasses;
 
     @Id
     @GeneratedValue
@@ -54,11 +55,12 @@ public class Teacher {
     public Date getModified() {return modified;}
     public void setModified(Date modified) {this.modified = modified;}
 
-    @ManyToOne
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "klass")
     @JoinColumn(name="klass_id")
     @JsonIgnore
-    public Klass getKlass() {return klass;}
-    public void setKlass(Klass klass) {this.klass = klass;}
+    public List<Klass> getKlasses() {return klasses;}
+    public void setKlasses(List<Klass> klasses) {this.klasses = klasses;}
 }
 
 

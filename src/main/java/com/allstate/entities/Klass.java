@@ -18,7 +18,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "klasses")
-
+@Data
 public class Klass {
     private int id;
     private int version;
@@ -29,7 +29,7 @@ public class Klass {
     private double fee;
     private Date created;
     private Date modified;
-    private List<Teacher> teachers;
+    private Teacher teacher;
 
     @Id
     @GeneratedValue
@@ -70,10 +70,14 @@ public class Klass {
     public Date getModified() {return modified;}
     public void setModified(Date modified) {this.modified = modified;}
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "klasses")
+
+    @ManyToOne
+    @JoinColumn(name="teacher_id")
     @JsonIgnore
-    public List<Teacher> getTeachers() {return teachers;}
-    public void setTeachers(List<Teacher> teachers) {this.teachers = teachers;}
+    public Teacher getTeacher() {return teacher;}
+    public void setTeacher(Teacher teacher) {this.teacher = teacher;}
+
+
 }
 
 

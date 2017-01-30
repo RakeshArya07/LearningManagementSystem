@@ -1,9 +1,12 @@
 package com.allstate.services;
 
 import com.allstate.entities.Klass;
+import com.allstate.entities.Teacher;
 import com.allstate.repositories.IKlass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class KlassService {
