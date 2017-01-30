@@ -62,9 +62,4 @@ public class TeacherServiceTest {
         assertEquals(2,teachers.size());
     }
 
-    @Test
-    public void shouldFindListOfClassesToughtByteacher() throws Exception {
-        List<Klass> klasses = this.service.findClassesToughtByTeacher("Chyld");
-        assertEquals(1,klasses.size());
-    }
 }

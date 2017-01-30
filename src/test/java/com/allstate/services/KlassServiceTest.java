@@ -13,6 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -54,5 +55,11 @@ public class KlassServiceTest {
     public void shouldFindByName() throws Exception {
         Klass klass = this.service.findByName("Physics");
         assertEquals(1,klass.getId());
+    }
+
+    @Test
+    public void shouldFindAllKlassesTaughtByTeacher() throws Exception{
+        List<Klass> klasses = this.service.findAllKlassesByTeacherId(1);
+        assertEquals(2,klasses.size());
     }
 }
