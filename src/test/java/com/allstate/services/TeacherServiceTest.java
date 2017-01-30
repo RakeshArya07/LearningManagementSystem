@@ -42,6 +42,7 @@ public class TeacherServiceTest {
         Teacher after = this.service.create(teacher);
         assertEquals(3,after.getId());
         assertEquals("Nathan",after.getName());
+        assertEquals(Gender.MALE,after.getGender());
     }
 
     @Test
