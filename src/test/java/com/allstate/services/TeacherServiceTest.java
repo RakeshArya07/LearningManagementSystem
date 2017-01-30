@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.Klass;
 import com.allstate.entities.Teacher;
+import com.allstate.enums.Department;
 import com.allstate.enums.Gender;
 import org.junit.After;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -25,6 +27,9 @@ public class TeacherServiceTest {
     @Autowired
     private TeacherService service;
 
+    @Autowired
+    private KlassService klassService;
+
     @Before
     public void setUp() throws Exception {
     }
@@ -34,7 +39,7 @@ public class TeacherServiceTest {
     }
 
     @Test
-    public void shouldCreateStudent() throws Exception {
+    public void shouldCreateTeacher() throws Exception {
         Teacher teacher = new Teacher();
         teacher.setName("Nathan");
         teacher.setGender(Gender.MALE);
@@ -59,6 +64,12 @@ public class TeacherServiceTest {
     }
 
     @Test
+    public void shouldNotFindByGenderFemale() throws Exception {
+        List<Teacher> teachers = this.service.findByGender(Gender.FEMALE);
+        assertEquals(0,teachers.size());
+    }
+
+    @Test
     public void shouldFindByAge() throws Exception {
         List<Teacher> teachers = this.service.findByAgeGreaterThan(30);
         assertEquals(2,teachers.size());
@@ -66,7 +77,14 @@ public class TeacherServiceTest {
     @Test
     @Transactional
     public void shouldFindAllKlassesTaughtByTeacher() throws Exception{
-        List<Klass> klasses = this.service.findById(1).getKlasses();
-        assertEquals(2,klasses.size());
+        Klass klass = new Klass();
+        klass.setName("Chemistry");
+        klass.setDepartment(Department.ENGINEERING);
+        klass.setFee(120);
+        klass.setSemester(new Date());
+        klass.setTeacher(this.service.findById(1));
+        this.klassService.create(klass);
+        List<Klass> klasses = this.service.findAllKlassesByTeacher(1);
+        assertEquals(3,klasses.size());
     }
 }

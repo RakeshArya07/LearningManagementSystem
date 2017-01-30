@@ -40,4 +40,8 @@ public class TeacherService {
         return this.teacherRepository.findByAgeGreaterThan(age);
     }
 
+    public List<Klass> findAllKlassesByTeacher(int id){
+        return this.teacherRepository.findOne(id).getKlasses();
+    }
+
 }
