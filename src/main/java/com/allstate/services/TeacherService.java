@@ -3,6 +3,7 @@ package com.allstate.services;
 
 import com.allstate.entities.Klass;
 import com.allstate.entities.Teacher;
+import com.allstate.enums.Gender;
 import com.allstate.repositories.IKlass;
 import com.allstate.repositories.ITeacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +32,9 @@ public class TeacherService {
         return this.teacherRepository.findOne(id);
     }
 
-    public List<Teacher> findByGender(String gender){
+    public List<Teacher> findByGender(Gender gender){
         return this.teacherRepository.findByGender(gender);
     }
-
 
     public List<Teacher> findByAgeGreaterThan(int age){
         return this.teacherRepository.findByAgeGreaterThan(age);

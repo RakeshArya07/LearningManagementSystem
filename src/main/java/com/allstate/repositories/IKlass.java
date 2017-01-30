@@ -12,7 +12,4 @@ import java.util.List;
 public interface IKlass extends CrudRepository<Klass,Integer>{
     public Klass findByName(String name);
 
-    String sql1= "select *  from klasses where teacher_id > :id";
-    @Query(value = sql1, nativeQuery = true)
-    public List<Klass> findAllKlassesByTeacherId (@Param("id") int id);
 }

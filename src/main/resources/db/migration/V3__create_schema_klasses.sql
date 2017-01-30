@@ -9,7 +9,7 @@ CREATE TABLE `klasses` (
   `teacher_id` INT,
   `created`    TIMESTAMP      NOT NULL  DEFAULT NOW(),
   `modified`   TIMESTAMP      NOT NULL  DEFAULT NOW(),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_teacher_id`
   FOREIGN KEY (`teacher_id`)
   REFERENCES `teachers` (`id`)

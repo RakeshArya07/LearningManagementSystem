@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -52,7 +53,7 @@ public class TeacherServiceTest {
 
     @Test
     public void shouldFindByGender() throws Exception {
-        List<Teacher> teachers = this.service.findByGender("MALE");
+        List<Teacher> teachers = this.service.findByGender(Gender.MALE);
         assertEquals(2,teachers.size());
     }
 
@@ -61,5 +62,10 @@ public class TeacherServiceTest {
         List<Teacher> teachers = this.service.findByAgeGreaterThan(30);
         assertEquals(2,teachers.size());
     }
-
+    @Test
+    @Transactional
+    public void shouldFindAllKlassesTaughtByTeacher() throws Exception{
+        List<Klass> klasses = this.service.findById(1).getKlasses();
+        assertEquals(2,klasses.size());
+    }
 }

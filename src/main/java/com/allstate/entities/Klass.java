@@ -31,6 +31,9 @@ public class Klass {
     private Date modified;
     private Teacher teacher;
 
+    public Klass() {
+    }
+
     @Id
     @GeneratedValue
     public int getId() {return id;}
@@ -73,7 +76,6 @@ public class Klass {
 
     @ManyToOne
     @JoinColumn(name="teacher_id")
-    @JsonIgnore
     public Teacher getTeacher() {return teacher;}
     public void setTeacher(Teacher teacher) {this.teacher = teacher;}
 

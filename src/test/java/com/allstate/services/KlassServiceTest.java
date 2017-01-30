@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class KlassServiceTest {
         klass.setFee(120);
         klass.setSemester(new Date());
         Klass after = this.service.create(klass);
-        assertEquals(2,after.getId());
+        assertEquals(3,after.getId());
     }
 
     @Test
@@ -57,9 +58,5 @@ public class KlassServiceTest {
         assertEquals(1,klass.getId());
     }
 
-    @Test
-    public void shouldFindAllKlassesTaughtByTeacher() throws Exception{
-        List<Klass> klasses = this.service.findAllKlassesByTeacherId(1);
-        assertEquals(2,klasses.size());
-    }
+
 }

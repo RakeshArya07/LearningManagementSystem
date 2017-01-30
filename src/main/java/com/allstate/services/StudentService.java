@@ -15,9 +15,7 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public Student create(Student std){
-        return this.studentRepository.save(std);
-    }
+    public Student create(Student std){return this.studentRepository.save(std);}
 
     public Student findById(int id){
         return this.studentRepository.findOne(id);

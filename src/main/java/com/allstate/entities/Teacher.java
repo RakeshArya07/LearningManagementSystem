@@ -22,8 +22,9 @@ public class Teacher {
     private int age;
     private Date created;
     private Date modified;
-    private Klass klass;
     private List<Klass> klasses;
+
+    public Teacher(){}
 
     @Id
     @GeneratedValue
@@ -56,8 +57,7 @@ public class Teacher {
     public void setModified(Date modified) {this.modified = modified;}
 
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "klass")
-    @JoinColumn(name="klass_id")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "teacher")
     @JsonIgnore
     public List<Klass> getKlasses() {return klasses;}
     public void setKlasses(List<Klass> klasses) {this.klasses = klasses;}
