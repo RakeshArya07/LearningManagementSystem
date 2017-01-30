@@ -23,7 +23,7 @@ public class StudentServiceTest {
         Student student = new Student();
         student.setEmail("test@gmail.com");
 		Student after = this.service.create(student);
-		assertEquals(2,after.getId());
+		assertEquals(3,after.getId());
     }
 
     @Test
@@ -35,9 +35,9 @@ public class StudentServiceTest {
 
     @Test
     public void shouldFindByEmail() throws Exception {
-        Student student = this.service.findByEmail("rk@gmail.com");
-        assertEquals(1,student.getId());
-        assertEquals("rk@gmail.com",student.getEmail());
+        Student student = this.service.findByEmail("test@gmail.com");
+        assertEquals(2,student.getId());
+        assertEquals("test@gmail.com",student.getEmail());
     }
 
 }
