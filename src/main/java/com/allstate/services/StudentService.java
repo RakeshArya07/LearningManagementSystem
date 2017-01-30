@@ -18,4 +18,12 @@ public class StudentService {
     public Student create(Student std){
         return this.studentRepository.save(std);
     }
+
+    public Student findById(int id){
+        return this.studentRepository.findOne(id);
+    }
+
+    public Student findByEmail(String email){
+        return  this.studentRepository.findByEmail(email);
+    }
 }

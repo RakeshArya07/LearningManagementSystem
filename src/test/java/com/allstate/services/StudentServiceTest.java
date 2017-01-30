@@ -26,4 +26,18 @@ public class StudentServiceTest {
 		assertEquals(2,after.getId());
     }
 
+    @Test
+    public void shouldFindById() throws Exception {
+       Student student = this.service.findById(1);
+       assertEquals(1,student.getId());
+       assertEquals("rk@gmail.com",student.getEmail());
+    }
+
+    @Test
+    public void shouldFindByEmail() throws Exception {
+        Student student = this.service.findByEmail("rk@gmail.com");
+        assertEquals(1,student.getId());
+        assertEquals("rk@gmail.com",student.getEmail());
+    }
+
 }
