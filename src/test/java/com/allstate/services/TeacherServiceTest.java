@@ -58,6 +58,12 @@ public class TeacherServiceTest {
     }
 
     @Test
+    public void shouldFindTeacherByName() throws Exception{
+        Teacher teacher = this.service.findByName("Chyld");
+        assertEquals(1,teacher.getId());
+    }
+
+    @Test
     public void shouldFindByGender() throws Exception {
         List<Teacher> teachers = this.service.findByGender(Gender.MALE);
         assertEquals(2,teachers.size());
@@ -87,4 +93,6 @@ public class TeacherServiceTest {
         List<Klass> klasses = this.service.findAllKlassesByTeacher(1);
         assertEquals(3,klasses.size());
     }
+
+
 }

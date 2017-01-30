@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface ITeacher extends CrudRepository<Teacher,Integer>{
 
+    public Teacher findByName(String name);
     public List<Teacher> findByGender(Gender gender);
-
     public List<Teacher> findByAgeGreaterThan(int id);
 
 }

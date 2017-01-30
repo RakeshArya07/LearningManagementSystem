@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.Klass;
 import com.allstate.entities.Student;
+import com.allstate.entities.Teacher;
 import com.allstate.enums.Department;
 import org.junit.After;
 import org.junit.Before;
@@ -58,5 +59,10 @@ public class KlassServiceTest {
         assertEquals(1,klass.getId());
     }
 
+    @Test
+    public void shouldFindTeacherByClassName() throws Exception{
+        Teacher teacher = this.service.findById(1).getTeacher();
+        assertEquals("Chyld",teacher.getName());
+    }
 
 }
