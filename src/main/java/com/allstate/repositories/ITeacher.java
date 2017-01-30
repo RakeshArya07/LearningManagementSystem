@@ -17,7 +17,4 @@ public interface ITeacher extends CrudRepository<Teacher,Integer>{
     String sql2 = "select *  from teachers where age > :age";
     @Query(value = sql2, nativeQuery = true)
     public List<Teacher> findByAgeGreaterThan (@Param("age") int age);
-
-
-
 }

@@ -27,4 +27,8 @@ public class KlassService {
 
     public Klass findByName(String name){ return this.repository.findByName(name);}
 
+    public List<Klass> findAllKlassesByTeacherId(int id){
+        return this.repository.findAllKlassesByTeacherId(id);
+    }
+
 }
